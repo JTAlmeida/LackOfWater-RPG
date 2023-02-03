@@ -98,7 +98,6 @@ export default function handleOption({
   }
 
   if (currentSceneId === 5) {
-    setCurrentHP(currentHP - 10);
     localStorage.setItem('isBattling', true);
     localStorage.setItem('nextScene', 3);
     localStorage.setItem('enemyId', 2);

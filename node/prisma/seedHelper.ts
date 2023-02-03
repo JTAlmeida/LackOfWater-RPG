@@ -36,7 +36,7 @@ const Scenes: CreateManyScenes = [
       "Ao seguir andando por alguns minutos e nota que tem um guarda mais forte, parecido com um escorpião, de costas.",
   },
   {
-    description: "Você tenta assassinar o guarda, mas falha, ele reage no último instante e te golpeia (-10HP).",
+    description: "Você tenta assassinar o guarda, mas falha, ele reage no último instante e se esquiva.",
   },
   {
     description:
