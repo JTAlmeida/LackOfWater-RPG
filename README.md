@@ -19,3 +19,11 @@ docker-compose down -v
 ```
 
 *IMPORTANT*: Dockerfile and docker-compose are configured to run in linux!
+
+
+## Separete repositories to run locally
+
+You can also check front and back-end separetely and run them locally.
+
+Front-end: https://github.com/JTAlmeida/lackofwater-front
+Back-end: https://github.com/JTAlmeida/lackofwater-back
