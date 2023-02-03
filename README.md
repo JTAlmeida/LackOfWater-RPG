@@ -1,5 +1,9 @@
 # Fullstack project with nginx + react + node + postgres + docker
 
+## Deploy
+Project is currently deployed with AWS at: 
+http://ec2-100-26-121-48.compute-1.amazonaws.com/
+
 ## How to build for docker
 
 1- Clone this repository;
@@ -20,10 +24,11 @@ docker-compose down -v
 
 *IMPORTANT*: Dockerfile and docker-compose are configured to run in linux!
 
-
 ## Separete repositories to run locally
 
 You can also check front and back-end separetely and run them locally.
 
 Front-end: https://github.com/JTAlmeida/lackofwater-front
+
 Back-end: https://github.com/JTAlmeida/lackofwater-back
+
