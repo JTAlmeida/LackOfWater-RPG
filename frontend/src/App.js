@@ -13,20 +13,20 @@ export default function App() {
       <ToastContainer />
       <UserProvider>
         <GameProvider>
-            <Router>
-              <Routes>
-                <Route
-                  path="/"
-                  element={
-                    <ProtectedRouteGuard>
-                      <GamePage />
-                    </ProtectedRouteGuard>
-                  }
-                />
-                <Route path="/sign-up" element={<SignUp />} />
-                <Route path="/sign-in" element={<SignIn />} />
-              </Routes>
-            </Router>
+          <Router>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <ProtectedRouteGuard>
+                    <GamePage />
+                  </ProtectedRouteGuard>
+                }
+              />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/sign-in" element={<SignIn />} />
+            </Routes>
+          </Router>
         </GameProvider>
       </UserProvider>
     </>
