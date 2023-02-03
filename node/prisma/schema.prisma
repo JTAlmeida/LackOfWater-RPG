@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int         @id @default(autoincrement())
+  email      String      @unique @db.VarChar(255)
+  password   String      @db.VarChar(255)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Session    Session[]
+  Character  Character[]
+}
+
+model Session {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  token     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  User      User      @relation(fields: [userId], references: [id])
+}
+
+model Character {
+  id              Int               @id @default(autoincrement())
+  userId          Int
+  currentSceneId  Int               @default(1)
+  name            String            @db.VarChar(20)
+  atk             Int               @default(20)
+  def             Int               @default(4)
+  hp              Int               @default(100)
+  xp              Int               @default(0)
+  lvl             Int               @default(1)
+  isAlive         Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  User            User              @relation(fields: [userId], references: [id])
+  CharacterItems  CharacterItem[]
+}
+
+model Item {
+  id              Int               @id @default(autoincrement())
+  name            String            @db.VarChar(255)
+  description     String            @db.VarChar(255)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+  CharacterItems  CharacterItem[]
+  EnemyItems      EnemyItem[]
+}
+
+model CharacterItem {
+  id          Int        @id @default(autoincrement())
+  characterId Int      
+  itemId      Int
+  quantity    Int
+  Character   Character  @relation(fields: [characterId], references: [id])
+  Item        Item       @relation(fields: [itemId], references: [id])
+}
+model Scene {
+  id                 Int      @id @default(autoincrement())
+  description        String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  SceneOptions       SceneOption[]
+}
+
+model SceneOption {
+  id                Int      @id @default(autoincrement())
+  sceneId           Int
+  optionId          Int
+  Scene             Scene    @relation(fields: [sceneId], references: [id])
+  Option            Option   @relation(fields: [optionId], references: [id])
+}
+
+model Option {
+  id              Int             @id @default(autoincrement())
+  description     String          @db.VarChar(255)
+  SceneOptions    SceneOption[]
+}
+
+model Enemy {
+  id          Int           @id @default(autoincrement())
+  name        String        @db.VarChar(255)
+  atk         Int
+  def         Int
+  hp          Int   
+  exp         Int
+  imgUrl      String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  EnemyItems  EnemyItem[]
+}
+
+model EnemyItem {
+  id          Int      @id @default(autoincrement())
+  enemyId     Int      
+  itemId      Int
+  dropChance  Int
+  Enemy       Enemy    @relation(fields: [enemyId], references: [id])
+  Item        Item     @relation(fields: [itemId], references: [id])
+}
