@@ -1,9 +1,5 @@
 # Fullstack project with nginx + react + node + postgres + docker
 
-## Deploy
-Project is currently deployed with AWS at: 
-http://ec2-100-26-121-48.compute-1.amazonaws.com/
-
 ## How to build for docker
 
 1- Clone this repository;
